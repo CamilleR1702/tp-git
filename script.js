@@ -1,7 +1,7 @@
 $(document).ready(function(){
     let listTodo = [];
 
-    displayCardTodo();
+    displayCardTodo(listTodo);
 
     $("#add-todo").click(function(){
         listTodo.push(new Todo(
@@ -9,7 +9,7 @@ $(document).ready(function(){
             $("#label-todo").val()
         ));
 
-        displayCardTodo();
+        displayCardTodo(listTodo);
         console.log("listTodo", listTodo);
     });
     
@@ -23,11 +23,11 @@ $(document).ready(function(){
     });
     
     
-    function displayCardTodo() {
+    function displayCardTodo(list) {
         $("#container-todo").empty();
-        for(var i = 0 ; i < listTodo.length ; i++){
+        for(var i = 0 ; i < list.length ; i++){
             $("#container-todo").append(
-                generateCardTemplate(listTodo[i])
+                generateCardTemplate(list[i])
                 );
             }
         }
@@ -54,6 +54,36 @@ $(document).ready(function(){
             }
         });
     }
+
+    $("#search-button").click(function(){
+        var filter = $("#searchtd").val();
+        let listMatchTodo = []
+        console.log("filter :" + filter)
+        for(var i = 0 ; i < listTodo.length ; i++){
+            if (listTodo[i].label.toLowerCase().match(filter.toLowerCase())){
+                console.log('match');
+                listMatchTodo.push(listTodo[i]);
+            }else{
+                console.log('ne match pas')
+            }
+        }
+        if(listMatchTodo.length > 0){
+            displayFilter(filter);
+            displayCardTodo(listMatchTodo);
+        }
+        console.log(listMatchTodo)
+    })
+
+    function displayFilter(filter){
+        $("#display-filter").append("<button id=\"delete-filter\">"+ filter +"</button>");
+    }
+
+    $("body").on("click", "#delete-filter", function(){
+        $("#display-filter").empty();
+        $("#searchtd").val('');
+        displayCardTodo(listTodo);
+    });
+    
 });
     
 class Todo {
