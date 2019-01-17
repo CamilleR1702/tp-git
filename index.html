@@ -1,8 +1,53 @@
-<div>
-    <div>
-        <div>
-            <input type="text">
-        </div>
-        <button>Valider</button>
-    </div>
-</div>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>TP : Todo List</title>
+</head>
+<body>
+    <h1>TP : Todo List</h1>
+    
+    <main>
+        <section class="section-list">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="content-full-list">
+                            <div class="row" id="container-todo">
+
+                            </div> <!-- row -->
+                        </div> <!-- content full list -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row justify-center">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Ajouter une tâche</label>
+                            <input type="text" id="label-todo" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        </div>
+                        <button id="add-todo" class="btn btn-primary">Valider</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
