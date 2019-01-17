@@ -75,7 +75,8 @@ $(document).ready(function(){
     })
 
     function displayFilter(filter){
-        $("#display-filter").append("<button id=\"delete-filter\">"+ filter +"</button>");
+        $("#display-filter").empty();
+        $("#display-filter").append("<button id=\"delete-filter\">"+ filter +" \&times</button>");
     }
 
     $("body").on("click", "#delete-filter", function(){
