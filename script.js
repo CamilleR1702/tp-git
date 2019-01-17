@@ -77,6 +77,13 @@ $(document).ready(function(){
     function displayFilter(filter){
         $("#display-filter").append("<button id=\"delete-filter\">"+ filter +"</button>");
     }
+
+    $("body").on("click", "#delete-filter", function(){
+        $("#display-filter").empty();
+        $("#searchtd").val('');
+        displayCardTodo(listTodo);
+    });
+    
 });
     
 class Todo {
