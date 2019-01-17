@@ -12,23 +12,48 @@ $(document).ready(function(){
         displayCardTodo();
         console.log("listTodo", listTodo);
     });
-
+    
+    $("body").on("click", ".checkbox-todo", function(){
+        let checkbox = $(this)[0];
+        if(checkbox.checked){
+            markTodoRemoved(checkbox.id)
+        }
+    });
+    
     function generateCardTemplate(todo){
-        return "<div class=\"card my-2\"><div class=\"card-body\"><p>"+ todo.label +"</p></p><div class=\"card-footer\"><div class=\"form-check\"></div><input type=\"checkbox\" class=\"custom-control-input\" id=\"checkbox-"+ todo.id +"\"><label class=\"custom-control-label\" for=\"validation123\">J'ai terminé ma tâche</label></div></div></div>"
+        tag = "<div class=\"card my-2\"><div class=\"card-body\"><p>"+ todo.label +"</p></p><div class=\"card-footer\"><div class=\"form-check\"></div><input type=\"checkbox\" class=\ncheckbox-todo\n id=\""+ todo.id +"\"><label>J'ai terminé ma tâche</label></div></div></div>"
+        return tag;
     }
-
+    
     function displayCardTodo() {
+        $("#container-todo").empty();
         for(var i = 0 ; i < listTodo.length ; i++){
             $("#container-todo").append(
                 generateCardTemplate(listTodo[i])
             );
         }
     }
-});
 
+    ///mark checked todo as remove
+    function markTodoRemoved(todoId){
+        listTodo.forEach(element => {
+            if(element.id == todoId){
+                element.markRemove()
+            }
+        });
+
+        $(".card-body p").addClass("todo-removed");
+    }
+});
+    
 class Todo {
     constructor(id, label) {
         this.id = id;
         this.label = label;
+        this.checked = false;
+    }
+
+    markRemove(){
+        this.checked = true;
     }
 }
