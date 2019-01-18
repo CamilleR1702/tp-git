@@ -55,23 +55,41 @@ $(document).ready(function(){
         });
     }
 
+    ///Click on search butto,
     $("#search-button").click(function(){
-        var filter = $("#searchtd").val();
-        let listMatchTodo = []
-        console.log("filter :" + filter)
-        for(var i = 0 ; i < listTodo.length ; i++){
-            if (listTodo[i].label.toLowerCase().match(filter.toLowerCase())){
-                console.log('match');
-                listMatchTodo.push(listTodo[i]);
+        $("#display-error-message").empty();
+        $("#display-filter").empty();
+        if (listTodo.length > 0){
+            if($("#searchtd").val() != null && $("#searchtd").val() != ""){
+                console.log($("#searchtd").val());
+                var filter = $("#searchtd").val();
+                let listMatchTodo = []
+                console.log("filter :" + filter)
+                
+                ///iterate on each todo in todolist
+                for(var i = 0 ; i < listTodo.length ; i++){
+                    ///if todo match to filter then add it to listMatchTodo
+                    if (listTodo[i].label.toLowerCase().match(filter.toLowerCase())){
+                        console.log('match');
+                        listMatchTodo.push(listTodo[i]);
+                    }else{
+                        console.log('ne match pas')
+                    }
+                }
+                ///If there is match, display filter and matched todos
+                if(listMatchTodo.length > 0){
+                    console.log('list match todo length', listMatchTodo.length)
+                    displayFilter(filter);
+                    displayCardTodo(listMatchTodo);
+                }else{
+                    $("#display-error-message").append("<b>Aucun résultat trouvé</b>");
+                }
             }else{
-                console.log('ne match pas')
+                $("#display-error-message").append("<b>Aucun filtre rentré</b>");
             }
+        } else {
+            $("#display-error-message").append("<b>aucun todo ajouté</b>");
         }
-        if(listMatchTodo.length > 0){
-            displayFilter(filter);
-            displayCardTodo(listMatchTodo);
-        }
-        console.log(listMatchTodo)
     })
 
     function displayFilter(filter){
