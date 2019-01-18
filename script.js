@@ -4,11 +4,17 @@ $(document).ready(function(){
     displayCardTodo(listTodo);
 
     $("#add-todo").click(function(){
-        listTodo.push(new Todo(
-            listTodo.length + 1,
-            $("#label-todo").val()
-        ));
-        $("#label-todo").val('');
+        $("#error-todo-title").empty();
+        var labelTodo = $("#label-todo").val();
+        if(labelTodo != null && labelTodo != ""){
+            listTodo.push(new Todo(
+                listTodo.length + 1,
+                labelTodo
+            ));
+            $("#label-todo").val('');
+        }else{
+            $("#error-todo-title").append("Veuillez indiquer un titre");
+        }
 
         displayCardTodo(listTodo);
     });
