@@ -8,9 +8,9 @@ $(document).ready(function(){
             listTodo.length + 1,
             $("#label-todo").val()
         ));
+        $("#label-todo").val('');
 
         displayCardTodo(listTodo);
-        console.log("listTodo", listTodo);
     });
     
     $("body").on("click", ".checkbox-todo", function(){
@@ -61,19 +61,15 @@ $(document).ready(function(){
         $("#display-filter").empty();
         if (listTodo.length > 0){
             if($("#searchtd").val() != null && $("#searchtd").val() != ""){
-                console.log($("#searchtd").val());
                 var filter = $("#searchtd").val();
                 let listMatchTodo = []
-                console.log("filter :" + filter)
                 
                 ///iterate on each todo in todolist
                 for(var i = 0 ; i < listTodo.length ; i++){
                     ///if todo match to filter then add it to listMatchTodo
                     if (listTodo[i].label.toLowerCase().match(filter.toLowerCase())){
-                        console.log('match');
                         listMatchTodo.push(listTodo[i]);
                     }else{
-                        console.log('ne match pas')
                     }
                 }
                 ///If there is match, display filter and matched todos
@@ -89,6 +85,10 @@ $(document).ready(function(){
             }
         } else {
             $("#display-error-message").append("<b>aucun todo ajouté</b>");
+        }
+        if(listMatchTodo.length > 0){
+            displayFilter(filter);
+            displayCardTodo(listMatchTodo);
         }
     })
 
