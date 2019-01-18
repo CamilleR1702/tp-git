@@ -8,9 +8,9 @@ $(document).ready(function(){
             listTodo.length + 1,
             $("#label-todo").val()
         ));
+        $("#label-todo").val('');
 
         displayCardTodo(listTodo);
-        console.log("listTodo", listTodo);
     });
     
     $("body").on("click", ".checkbox-todo", function(){
@@ -58,20 +58,16 @@ $(document).ready(function(){
     $("#search-button").click(function(){
         var filter = $("#searchtd").val();
         let listMatchTodo = []
-        console.log("filter :" + filter)
         for(var i = 0 ; i < listTodo.length ; i++){
             if (listTodo[i].label.toLowerCase().match(filter.toLowerCase())){
-                console.log('match');
                 listMatchTodo.push(listTodo[i]);
             }else{
-                console.log('ne match pas')
             }
         }
         if(listMatchTodo.length > 0){
             displayFilter(filter);
             displayCardTodo(listMatchTodo);
         }
-        console.log(listMatchTodo)
     })
 
     function displayFilter(filter){
