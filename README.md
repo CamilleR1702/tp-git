@@ -6,4 +6,4 @@ Il y a également une barre de recherche qui permet d'effectuer des recherches d
 
 Pour tester l'application, vous pouvez ajouter plusieurs tâches en entrant un titre dans le champ "titre" puis en cliquant sur valider.
 Ensuite vous pouvez trier les tâches en effectuant une recherche dans la barre de recherche. Le tri s'effectuera selon les titres donnés.
-Pour finir vous pouvez indiquer une tâche comme terminé en cochant la checkbox prévu dans la carte de la tâche.
+Pour finir vous pouvez indiquer une tâche comme terminée en cochant la checkbox prévue dans la carte de la tâche.
