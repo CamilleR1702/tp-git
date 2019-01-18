@@ -1,3 +1,7 @@
 .todo-removed{
     text-decoration: line-through;
 }
+
+.error-todo {
+    color: red;
+}
